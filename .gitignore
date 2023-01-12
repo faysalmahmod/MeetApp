@@ -24,4 +24,4 @@ yarn-error.log*
 auth-server/config.json
 
 
-config.js
+config.json
