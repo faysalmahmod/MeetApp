@@ -1,15 +1,18 @@
 import { mockData } from './mock-data';
-import NProgress from 'nprogress';
 import axios from 'axios';
+import NProgress from 'nprogress';
 
 
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
-  // [::1] is the IPv6 localhost address.
-  window.location.hostname === '[::1]' ||
-  // 127.0.0.0/8 are considered localhost for IPv4.
-  window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
+    window.location.hostname === '[::1]' ||
+    window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
 );
+
+
+const config = {
+
+}
 
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem('access_token');
@@ -22,7 +25,7 @@ export const getAccessToken = async () => {
     const code = await searchParams.get("code");
     if (!code) {
       const results = await axios.get(
-        "https://59zfytt4t1.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url"
+        "https://59zfytt4t1.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url", config
       );
       const { authUrl } = results.data;
       return (window.location.href = authUrl);
@@ -59,7 +62,7 @@ export const getEvents = async () => {
   if (token) {
     removeQuery();
     const url = `https://59zfytt4t1.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/${token}`;
-    const result = await axios.get(url);
+    const result = await axios.get(url, config);
     if (result.data) {
       var locations = extractLocations(result.data.events);
       localStorage.setItem("lastEvents", JSON.stringify(result.data));

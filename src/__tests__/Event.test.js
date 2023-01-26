@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { shallow } from 'enzyme';
+// COMPONENTS //////////
 import Event from '../Event';
+// VARS and FUNCS //////////
 import { mockData } from '../mock-data';
 
 describe('<Event /> component', () => {
@@ -23,17 +25,17 @@ describe('<Event /> component', () => {
   });
 
   test('<Event /> start time is rendered correctly', () => {
-    const eventStart = EventWrapper.find('p.start');
-    const dateString = event.start.dateTime;
+    const eventStart = EventWrapper.find('.start');
+    const dateString = new Date(event.start.dateTime).toGMTString();
     expect(eventStart).toBeDefined();
     expect(eventStart.text()).toBe(dateString);
   });
 
   test('<Event /> location is rendered correctly', () => {
-    const eventLocation = EventWrapper.find('p.location');
+    const eventLocation = EventWrapper.find('.location');
     const locationString = event.location;
     expect(eventLocation).toBeDefined();
-    expect(eventLocation.text()).toBe(`Location: ${locationString}`);
+    expect(eventLocation.text()).toBe(`${locationString}`);
   });
 
   test('<Event /> details is initially collapsed, children hidden, details-button text is "show details"', () => {

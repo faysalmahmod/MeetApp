@@ -12,16 +12,17 @@ class Event extends Component {
   render() {
     const { event } = this.props;
     const { collapsed } = this.state;
+    const dateString = new Date(event.start.dateTime).toGMTString();
 
     return (
       <div className={`Event ${this.state.collapsed ? '' : 'expanded'}`}>
-        <h2 className="summary">{ event.summary }</h2>
-        <p className="start">
-          { event.start.dateTime }
-        </p>
-        <p className="location">
-          {`Location: ${event.location}`}
-        </p>
+        <h2 className="summary">{event.summary}</h2>
+        <h4 className="start">
+          {dateString}
+        </h4>
+        <h4 className="location">
+          {`${event.location}`}
+        </h4>
         <button
           className='details-button'
           onClick={this.toggleDetails}

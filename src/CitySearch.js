@@ -38,7 +38,7 @@ class CitySearch extends Component {
     this.props.updateEvents(suggestion);
   };
 
-  handleInputFocus = () => {this.setState({showSuggestions: true})}
+  handleInputFocus = () => { this.setState({ showSuggestions: true }) }
 
   render() {
     return (
