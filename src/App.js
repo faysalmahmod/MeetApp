@@ -19,7 +19,7 @@ class App extends Component {
 
   async componentDidMount() {
     this.mounted = true;
-    getEvents().then(events => {
+    getEvents().then((events) => {
       if (this.mounted) {
         events = events.slice(0, this.state.eventCount);
         this.setState({ events, locations: extractLocations(events) });
@@ -32,10 +32,10 @@ class App extends Component {
   updateEvents = (location, inputNumber) => {
     const { eventCount, seletedLocation } = this.state;
     if (location) {
-      getEvents().then(events => {
+      getEvents().then((events) => {
         const locationEvents = (location === 'all') ?
           events :
-          events.filter(event => event.location === location);
+          events.filter((event) => event.location === location);
         const eventsToShow = locationEvents.slice(0, eventCount);
         this.setState({
           events: eventsToShow,
