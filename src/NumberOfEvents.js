@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
+import { ErrorAlert } from './Alert';
 
 class NumberOfEvents extends Component {
-  state = { noe: 32 }
+  state = { noe: 32, errorText: '' }
 
   handleInputChanged = (event, props) => {
     let inputValue = event.target.value;
-    if (inputValue < 0) inputValue = 0;
+    let errText;
+
+    // don't even allow negative numbers; come on now. loose comparison for "0" == 0
+    if (inputValue < 0 || inputValue == 0) inputValue = 0;
+    if (!inputValue) errText = 'Number of events must be greater than 0';
+    else if (inputValue >= 50) {
+      errText = 'The maximumum is 50.';
+      inputValue = 50;
+    }
     this.props.updateEvents(null, inputValue);
-    this.setState({ noe: inputValue });
-    console.log(this.props);
+    this.setState({ noe: inputValue, errorText: errText });
   }
 
   render() {
@@ -23,8 +31,8 @@ class NumberOfEvents extends Component {
           onChange={event => {
             this.handleInputChanged(event);
           }}
-        >
-        </input>
+        />
+        <ErrorAlert text={this.state.errorText} />
       </div>
     )
   }
