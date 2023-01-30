@@ -31,56 +31,56 @@ Treffen is an app that will show upcoming events by city so a user will never mi
 --- When: the user opens the app
 --- Then: display all events from all cities
 
-- Scenario 2: User should see a list of suggestions when they search for a city.
+- `Scenario 2`: User should see a list of suggestions when they search for a city.
 --- Given: the main page is open
 --- When: the user starts typing in the city search bar
 --- Then: suggestion results populate (from search bar input)
 
-- Scenario 3: User can select a city from the suggested list.
+- `Scenario 3`: User can select a city from the suggested list.
 --- Given: there are suggestions visible
 --- When: the user clicks on a city
 --- Then: the selected city's event page opens
 
 ### FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS
-- Scenario 1: An event element is collapsed by default
+- `Scenario 1`: An event element is collapsed by default
 --- Given: an event element is visible.
 --- When: the event element hasn’t been clicked yet
 --- Then: the event element is collapsed.
 
-- Scenario 2: User can expand an event to see its details
+- `Scenario 2`: User can expand an event to see its details
 --- Given: an event element is visible.
 --- When: the event element is clicked.
 --- Then: the event element is expanded.
 
-- Scenario 3: User can collapse an event to hide its details.
+- `Scenario 3`: User can collapse an event to hide its details.
 --- Given: The event element is expanded.
 --- When: the user clicks it.
 --- Then: the element is collapsed.
 
 ### FEATURE 3: SPECIFY NUMBER OF EVENTS
-- Scenario 1: When user hasn’t specified a number, 32 is the default number
+- `Scenario 1`: When user hasn’t specified a number, 32 is the default number
 --- Given: “number of events” is visible
 --- When: the user hasn’t specified a number
 --- Then: the number is 32
 
-- Scenario 2: User can change the number of events they want to see
+- `Scenario 2`: User can change the number of events they want to see
 --- Given: “number of events” is visible
 --- When: the user specifies a number (integer)
 --- Then: the number becomes the user’s input number.
 
 ### FEATURE 4: USE THE APP WHEN OFFLINE
-- Scenario 1: Show cached data when there’s no internet connection
+- `Scenario 1`: Show cached data when there’s no internet connection
 --- Given: there is cached data
 --- When: there is no internet connection
 --- Then: the cached data still displays
 
-- Scenario 2: Show error when user changes the settings (city, time range)
+- `Scenario 2`: Show error when user changes the settings (city, time range)
 --- Given: The user changes the city or time range
 --- When: There are no events that meet those criteria
 --- Then: An error message displays “No Results” or similar
 
 ### FEATURE 5: DATA VISUALIZATION
-- Scenario 1: Show a chart with the number of upcoming events in each city
+- `Scenario 1`: Show a chart with the number of upcoming events in each city
 --- Given: A user is viewing a city
 --- When: the user clicks on “data visualization” or similar
 --- Then: a page with graphs of event information/metrics is displayed
