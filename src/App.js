@@ -8,7 +8,9 @@ import EventList from './EventList';
 import TopBar from './TopBar';
 // DATA / FUNCS //////////
 import { getEvents, extractLocations } from './api';
-
+import {
+  ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
+} from 'recharts';
 class App extends Component {
   state = {
     events: [],
@@ -80,6 +82,20 @@ class App extends Component {
             updateEvents={this.updateEvents}
           />
         </div>
+        <ResponsiveContainer height={400} >
+          <ScatterChart
+            margin={{
+              top: 20, right: 20, bottom: 20, left: 20,
+            }}
+          >
+            <CartesianGrid />
+            <XAxis type="category" dataKey="city" name="City" />
+            <YAxis type="number" dataKey="number" name="Number of Events" allowDecimals={false} />
+            <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+            <Scatter data={this.getData()} fill="#8884d8" />
+          </ScatterChart>
+        </ResponsiveContainer>
+
         <EventList events={this.state.events} />
       </div>
     );
