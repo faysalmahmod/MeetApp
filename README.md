@@ -1,4 +1,4 @@
-Treffen App
+#Treffen App
 
 ----------
 Faisal Mahmood 2023
@@ -6,13 +6,13 @@ Created as part of the Career Foundry Full-Stack Development curriculum
 
 
 ----------
-Nutshell:
+#Nutshell:
 
 Treffen is an app that will show upcoming events by city so a user will never miss out on a concert, or teaching seminar, or lame t-shirt giveaway in a city near them.
 
 
 ----------
-Key Features:
+#Key Features:
 
 1.) Filter events by city. 
 2.)  Show/hide event details. 
@@ -23,7 +23,7 @@ Key Features:
 
 
 ----------
-Feature Scenarios:
+#Feature Scenarios:
 
 FEATURE 1: FILTER EVENTS BY CITY
 - Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities.
@@ -87,7 +87,7 @@ FEATURE 5: DATA VISUALIZATION
 
 
 ----------
-User Stories:
+#User Stories:
 
 As a [user],
 I should be able to: [show/hide an event’s details]
