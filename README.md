@@ -6,13 +6,13 @@ Created as part of the Career Foundry Full-Stack Development curriculum
 
 
 ----------
-#Nutshell:
+## Nutshell:
 
 Treffen is an app that will show upcoming events by city so a user will never miss out on a concert, or teaching seminar, or lame t-shirt giveaway in a city near them.
 
 
 ----------
-#Key Features:
+## Key Features:
 
 1.) Filter events by city. 
 2.)  Show/hide event details. 
@@ -23,9 +23,9 @@ Treffen is an app that will show upcoming events by city so a user will never mi
 
 
 ----------
-#Feature Scenarios:
+# Feature Scenarios:
 
-FEATURE 1: FILTER EVENTS BY CITY
+### FEATURE 1: FILTER EVENTS BY CITY
 - Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities.
 --- Given: the user hasn't searched for any city
 --- When: the user opens the app
@@ -41,7 +41,7 @@ FEATURE 1: FILTER EVENTS BY CITY
 --- When: the user clicks on a city
 --- Then: the selected city's event page opens
 
-FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS
+### FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS
 - Scenario 1: An event element is collapsed by default
 --- Given: an event element is visible.
 --- When: the event element hasn’t been clicked yet
@@ -57,7 +57,7 @@ FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS
 --- When: the user clicks it.
 --- Then: the element is collapsed.
 
-FEATURE 3: SPECIFY NUMBER OF EVENTS
+### FEATURE 3: SPECIFY NUMBER OF EVENTS
 - Scenario 1: When user hasn’t specified a number, 32 is the default number
 --- Given: “number of events” is visible
 --- When: the user hasn’t specified a number
@@ -68,7 +68,7 @@ FEATURE 3: SPECIFY NUMBER OF EVENTS
 --- When: the user specifies a number (integer)
 --- Then: the number becomes the user’s input number.
 
-FEATURE 4: USE THE APP WHEN OFFLINE
+### FEATURE 4: USE THE APP WHEN OFFLINE
 - Scenario 1: Show cached data when there’s no internet connection
 --- Given: there is cached data
 --- When: there is no internet connection
@@ -79,7 +79,7 @@ FEATURE 4: USE THE APP WHEN OFFLINE
 --- When: There are no events that meet those criteria
 --- Then: An error message displays “No Results” or similar
 
-FEATURE 5: DATA VISUALIZATION
+### FEATURE 5: DATA VISUALIZATION
 - Scenario 1: Show a chart with the number of upcoming events in each city
 --- Given: A user is viewing a city
 --- When: the user clicks on “data visualization” or similar
@@ -87,7 +87,7 @@ FEATURE 5: DATA VISUALIZATION
 
 
 ----------
-#User Stories:
+## User Stories:
 
 As a [user],
 I should be able to: [show/hide an event’s details]
