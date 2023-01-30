@@ -1,9 +1,22 @@
 import React, { Component } from "react";
 import ThemeChanger from "./ThemeChanger";
 import logo from './img/logo.png';
+import { InfoAlert } from './Alert';
 import './Topbar.css';
 
 class TopBar extends Component {
+  state = { infoText: '' }
+
+  networkStatus = () => {
+    this.setState({ infoText: navigator.online ? 'online' : 'offline' })
+  };
+
+  async componentDidMount() {
+    window.addEventListener('online', this.networkStatus);
+    window.addEventListener('offline', this.networkStatus);
+    this.networkStatus();
+  }
+
   render() {
     return (
       <div className="TopBar">
