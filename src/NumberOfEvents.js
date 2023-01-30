@@ -23,7 +23,7 @@ class NumberOfEvents extends Component {
     const { noe } = this.state;
     return (
       <div className="NumberOfEvents">
-        <h3># of Events:</h3>
+        <h3>Number of Events:</h3>
         <input
           className="noe-input"
           type="number"

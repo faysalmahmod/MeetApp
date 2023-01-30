@@ -1,10 +1,10 @@
 :root {
   /* change these top variables to change the theme! */
-  --primary-hue: 90;
-  --light-angle: 65deg;
+  --primary-hue: 10;
+  --light-angle: 30deg;
   --monochrome-alpha: 63%;
-  
-  --bg: hsl(var(--primary-hue), 50%, 30%);
+
+  --bg: hsl(var(--primary-hue), 20%, 30%);
   --bg-dark: hsl(var(--primary-hue), 50%, 20%);
   --heading-text: hsl(calc(var(--primary-hue) - 45), 100%, 80%);
   --heading-bg: hsla(calc(var(--primary-hue) - 15), 100%, 65%, 20%);
@@ -21,6 +21,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+a{
+  color: rgb(231, 223, 223);
 }
 
 h1 {
@@ -75,17 +79,17 @@ input {
 }
 
 .Event.expanded {
-  background: var(--heading-text);
-  color: black;
-  box-shadow: 0 .2em hsla(0, 0%, 100%, 40%);
+  background:rgba(53, 127, 196, 0.4) ;
+  color: rgb(255, 255, 255);
+  box-shadow: 0 .2em rgba(185, 184, 184, 0.4);
 }
 
 .details-button {
   padding: 1em 1.25em;
   border-radius: 1em;
   border: none;
-  color: blueviolet;
-  box-shadow: 0 .2em hsla(0, 0%, 0%, 20%);
+  color: rgb(3, 9, 36);
+  box-shadow: 0 .2em hsla(0, 0%, 10%, 50%);
   width: 120px;
 }
 
@@ -144,5 +148,5 @@ input {
 }
 
 .suggestions {
-  background: linear-gradient(90deg, var(--white-alpha), transparent);
+  background: linear-gradient(80deg, var(--white-alpha), transparent);
 }

@@ -3,10 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import reportWebVitals from './reportWebVitals';
 import * as atatus from 'atatus-spa';
 
-atatus.config('809fe18abe1a430aab6ef31a75001d03').install();
+atatus.config('ae8608a6c2e14cdb9f39dbcb0c6104a3').install(); // unique (to this app) atatus monitoring
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,5 +18,3 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://cra.link/PWA
 serviceWorkerRegistration.register();
-
-
