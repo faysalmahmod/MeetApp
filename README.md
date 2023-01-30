@@ -26,7 +26,7 @@ Treffen is an app that will show upcoming events by city so a user will never mi
 # Feature Scenarios:
 
 ### FEATURE 1: FILTER EVENTS BY CITY
-- Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities.
+- `Scenario 1`: When user hasn’t searched for a city, show upcoming events from all cities.
 --- Given: the user hasn't searched for any city
 --- When: the user opens the app
 --- Then: display all events from all cities
