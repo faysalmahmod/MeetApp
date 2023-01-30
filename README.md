@@ -11,6 +11,18 @@ Created as part of the Career Foundry Full-Stack Development curriculum
 Treffen is an app that will show upcoming events by city so a user will never miss out on a concert, or teaching seminar, or lame t-shirt giveaway in a city near them.
 
 
+## Access
+The live app - which you can find at `https://faysalmahmod.github.io/MeetApp/` - is currently in "testing" and hasn't been verified by Google, so just get in touch if you'd like access and I can add you as a tester. It uses Google OAuth2 for authentication, so you do need a Google account.
+
+As a progressive web app, it can be installed natively on any device.
+
+## Run locally
+This app was created with Create React App.
+
+To run this app, install all dependencies - e.g. with npm install - then run the app with npm run start.
+
+
+
 ----------
 ## Key Features:
 
