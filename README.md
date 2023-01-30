@@ -12,7 +12,7 @@ Treffen is an app that will show upcoming events by city so a user will never mi
 
 
 ## Access
-The live app - which you can find at `https://faysalmahmod.github.io/MeetApp/` - is currently in "testing" and hasn't been verified by Google, so just get in touch if you'd like access and I can add you as a tester. It uses Google OAuth2 for authentication, so you do need a Google account.
+The live app - which you can find at https://faysalmahmod.github.io/MeetApp/ - is currently in "testing" and hasn't been verified by Google, so just get in touch if you'd like access and I can add you as a tester. It uses Google OAuth2 for authentication, so you do need a Google account.
 
 As a progressive web app, it can be installed natively on any device.
 
