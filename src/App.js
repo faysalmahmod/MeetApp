@@ -6,28 +6,40 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import EventList from './EventList';
 import TopBar from './TopBar';
-import EventGenre from './EventGenre';
+import {OfflineAlert} from './Alert';
 // DATA / FUNCS //////////
-import { getEvents, extractLocations } from './api';
-import {
-  ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
-} from 'recharts';
+import WelcomeScreen from './WelcomeScreen';
+import { getEvents, extractLocations, checkToken, getAccessToken } from
+  './api';
+
+
+
 class App extends Component {
   state = {
     events: [],
     locations: [],
     seletedLocation: 'all',
-    eventCount: 32
+    eventCount: 32,
+    showWelcomeScreen: undefined
+    // infoText: ''
   }
 
   async componentDidMount() {
     this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        events = events.slice(0, this.state.eventCount);
-        this.setState({ events, locations: extractLocations(events) });
-      }
-    });
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get("code");
+
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({ events, locations: extractLocations(events) });
+        }
+      });
+    }
   }
 
   componentWillUnmount() { this.mounted = false; }
@@ -59,21 +71,17 @@ class App extends Component {
     }
   }
 
-  getData = () => {
-    const { locations, events } = this.state;
-    const data = locations.map((location) => {
-      const number = events.filter((event) => event.location === location).length;
-      const city = location.split(', ').shift();
-      return { city, number };
-    })
-    return data;
-  };
-
   render() {
-    const { events } = this.state;
+    if (this.state.showWelcomeScreen === undefined) return <div className="App" />
+
     return (
       <div className="App">
         <TopBar />
+        {!navigator.onLine && 
+        <OfflineAlert 
+          text='You are currently offline. The event list may not be up-to-date.'
+          className='OfflineAlert'
+        />}
         <div className="filter-box">
           <CitySearch
             locations={this.state.locations}
@@ -84,21 +92,11 @@ class App extends Component {
             updateEvents={this.updateEvents}
           />
         </div>
-          <EventGenre events={events} />
-          <ResponsiveContainer height={400} >
-            <ScatterChart
-              margin={{
-                top: 20, right: 20, bottom: 20, left: 20,
-              }}
-            >
-              <CartesianGrid />
-              <XAxis type="category" dataKey="city" name="City" />
-              <YAxis type="number" dataKey="number" name="Number of Events" allowDecimals={false} />
-              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-              <Scatter data={this.getData()} fill="#8884d8" />
-            </ScatterChart>
-          </ResponsiveContainer>
         <EventList events={this.state.events} />
+        <WelcomeScreen
+          showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => { getAccessToken() }}
+        />
       </div>
     );
   }

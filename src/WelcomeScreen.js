@@ -28,7 +28,7 @@ function WelcomeScreen(props) {
                 </div>
             </div>
             <a
-                href=""
+                href="https://github.com/faysalmahmod/MeetApp#readme"
                 rel="nofollow noopener"
                 className="p-policy-link"
             >

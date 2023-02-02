@@ -48,10 +48,11 @@ input {
   flex-direction: column;
 }
 
-.CitySearch {
+.CitySearch .NumberOfEvents {
   border-left: 1px solid var(--bg);
   border-bottom-left-radius: 100%;
   padding: 0 0 .75em 1.75em;
+  height: 100%;
 }
 
 .NumberOfEvents {
@@ -63,7 +64,6 @@ input {
   width: 100%;
 }
 
-.filter-box,
 .Event {
   margin-bottom: .35em;
   box-shadow: 0 .2em hsla(0, 0%, 0%, 40%);
@@ -149,4 +149,31 @@ input {
 
 .suggestions {
   background: linear-gradient(80deg, var(--white-alpha), transparent);
+  padding: 0;
+  margin: .25em 0 0;
+}
+
+suggestions li {
+  padding: 0 0 .45em .25em;
+  cursor: pointer;
+}
+
+.suggestions button {
+  padding: .25em;
+}
+
+.Alert {
+  margin-top: 0;
+  padding: .25em 0 0;
+  background: linear-gradient(90deg, var(--white-alpha), transparent);
+}
+
+.App > .Alert {
+  position: sticky;
+  align-self: flex-start;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  background: #fff7;
+  padding: .25em;
 }
