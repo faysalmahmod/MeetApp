@@ -6,7 +6,7 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import EventList from './EventList';
 import TopBar from './TopBar';
-import {OfflineAlert} from './Alert';
+import { OfflineAlert } from './Alert';
 // DATA / FUNCS //////////
 import WelcomeScreen from './WelcomeScreen';
 import { getEvents, extractLocations, checkToken, getAccessToken } from
@@ -77,11 +77,11 @@ class App extends Component {
     return (
       <div className="App">
         <TopBar />
-        {!navigator.onLine && 
-        <OfflineAlert 
-          text='You are currently offline. The event list may not be up-to-date.'
-          className='OfflineAlert'
-        />}
+        {!navigator.onLine &&
+          <OfflineAlert
+            text='You are currently offline. The event list may not be up-to-date.'
+            className='OfflineAlert'
+          />}
         <div className="filter-box">
           <CitySearch
             locations={this.state.locations}
