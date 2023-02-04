@@ -1,35 +1,38 @@
 :root {
   /* change these top variables to change the theme! */
-  --primary-hue: 10;
-  --light-angle: 30deg;
+  --primary-hue: 190;
+  --light-angle: 65deg;
   --monochrome-alpha: 63%;
 
-  --bg: hsl(var(--primary-hue), 20%, 30%);
+  --bg: hsl(var(--primary-hue), 50%, 30%);
   --bg-dark: hsl(var(--primary-hue), 50%, 20%);
   --heading-text: hsl(calc(var(--primary-hue) - 45), 100%, 80%);
   --heading-bg: hsla(calc(var(--primary-hue) - 15), 100%, 65%, 20%);
   --gray88: hsla(0, 0%, 88%, var(--monochrome-alpha));
   --white-alpha: hsla(0, 0%, 100%, var(--monochrome-alpha));
+  --black-alpha: hsla(0, 0%, 0%, var(--monochrome-alpha));
   --gray50: hsl(0, 0%, 50%);
   background: linear-gradient(var(--light-angle), var(--bg-dark), var(--bg) 200%);
 }
 
-:root * { box-sizing: border-box; }
+:root * {
+  box-sizing: border-box;
+}
 
 .App {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-a{
-  color: rgb(231, 223, 223);
+  /* align-items: center; */
 }
 
 h1 {
   color: var(--heading-text);
   margin: .25em 0;
+}
+
+.text-splash {
+  color: var(--heading-text);
 }
 
 ul {
@@ -48,7 +51,8 @@ input {
   flex-direction: column;
 }
 
-.CitySearch .NumberOfEvents {
+.CitySearch,
+.NumberOfEvents {
   border-left: 1px solid var(--bg);
   border-bottom-left-radius: 100%;
   padding: 0 0 .75em 1.75em;
@@ -79,17 +83,16 @@ input {
 }
 
 .Event.expanded {
-  background:rgba(53, 127, 196, 0.4) ;
-  color: rgb(255, 255, 255);
-  box-shadow: 0 .2em rgba(185, 184, 184, 0.4);
+  background: var(--heading-text);
+  color: black;
+  box-shadow: 0 .2em hsla(0, 0%, 100%, 40%);
 }
 
 .details-button {
   padding: 1em 1.25em;
-  border-radius: 1em;
+  border-radius: 3em;
   border: none;
-  color: rgb(3, 9, 36);
-  box-shadow: 0 .2em hsla(0, 0%, 10%, 50%);
+  box-shadow: 0 .2em hsla(0, 0%, 0%, 20%);
   width: 120px;
 }
 
@@ -100,60 +103,33 @@ input {
   transform: translateY(.2em);
 }
 
-.Event.expanded .details-button { background-color: white; }
-
-.subtitle { margin-top: 0;}
-
-.text-white {color: white;}
-
-.ThemeChanger {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
+.Event.expanded .details-button {
+  background-color: white;
 }
 
-.ThemeChanger button {
-  background-color: var(--gray88);
-  border-bottom-left-radius: 100%;
-  padding: .75em 1.25em;
+.subtitle {
+  margin-top: 0;
 }
 
-.ThemeChanger button:active {
-  background-color: var(--white-alpha);
-}
-
-.theme-number {
-  color: var(--white-alpha);
-}
-
-.TopBar {
-  text-align: center;
-  position: sticky;
-  width: 100%;
-  border-bottom: 1.1px solid var(--gray50);
-  background: var(--bg);
+.text-white {
+  color: white;
 }
 
 .filter-box {
   background: var(--heading-text);
   display: grid;
-  width: inherit;
+  width: 100%;
   grid-template-columns: 50% auto;
   border: none;
 }
 
 .suggestions {
-  background: linear-gradient(80deg, var(--white-alpha), transparent);
+  background: linear-gradient(90deg, var(--white-alpha), transparent);
   padding: 0;
   margin: .25em 0 0;
 }
 
-suggestions li {
+.suggestions li {
   padding: 0 0 .45em .25em;
   cursor: pointer;
 }
@@ -168,25 +144,84 @@ suggestions li {
   background: linear-gradient(90deg, var(--white-alpha), transparent);
 }
 
-.App > .Alert {
-  position: sticky;
-  align-self: flex-start;
-  top: 0;
-  left: 0;
+.TopBar {
+  text-align: center;
+  position: relative;
+  width: 100%;
+  border-bottom: 1.1px solid var(--gray50);
+  background: var(--bg);
+}
+
+.TopBar>.utilities {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 10em;
+  height: 100%;
   z-index: 101;
-  background: #fff7;
-  padding: .25em;
+  /* background: #fff7; */
+}
+
+.ThemeChangerUp,
+.ThemeChangerDown {
+  background-color: var(--gray88);
+  border-radius: .25rem;
+  height: 1.75rem;
+  color: var(--heading-text);
+  background-color: #444;
+  padding: 0 .75rem;
+}
+
+.ThemeChangerUp:active,
+.ThemeChangerDown:active {
+  background-color: var(--white-alpha);
+}
+
+.text-white-alpha {
+  color: var(--white-alpha);
+}
+
+.display-none {
+  display: none !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .data-vis-wrapper {
   display: flex;
-  align-items: center;
   flex-direction: column;
 }
-.data-vis-wrapper .recharts-responsive-container {
-  min-width: 100%;
+
+.chart-selector {
   display: flex;
+  justify-content: space-around;
+  width: 50%;
+  align-self: center;
 }
-.recharts-surface {
-  overflow: visible;
+
+.chart-selector>h4 {
+  margin: .2rem 0;
+  padding: .75rem .5rem;
+  cursor: pointer;
+}
+
+.chart-selector>h4:active {
+  background: var(--white-alpha);
+}
+
+.chart-selected {
+  border: 1px solid var(--heading-text);
 }
