@@ -1,45 +1,44 @@
-import React, { useEffect, useState } from "react";
-import { PieChart, Pie, ResponsiveContainer, Cell, Legend } from "recharts";
+import React, { useEffect, useState } from 'react';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from 'recharts';
+
 
 const EventGenre = ({ events }) => {
 
-    // Hook for setting state of event genre data
-    const [eventGenreData, setEventGenreData] = useState([]);
-
-    const colors = ['#E91E63', '#BB36D1', '#8258D1', '#57ACDC', '#57DCBE'];
+    const [data, setData] = useState([]);
+    const colors = ['#eae2e6', '#cd7389', '#9297C4', '#60bad7', '#fadba9'];
 
     useEffect(() => {
-        const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'Angular'];
         const getData = () => {
-            const data = genres.map((genre) => {
-                const value = events.filter(event => event.summary.includes(genre)).length;
+            const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
+            const data = genres.map(genre => {
+                const value = events.filter(event => event.summary.split(' ').includes(genre)).length
                 return { name: genre, value };
             })
             return data;
-        }
-        setEventGenreData(() => getData());
+        };
+        setData(() => getData());
     }, [events]);
 
     return (
         <ResponsiveContainer height={400}>
-            <PieChart>
-                <Legend verticalAlign="top" height={36} />
+            <PieChart width={400} height={400}>
                 <Pie
-                    data={eventGenreData}
+                    data={data}
                     cx="50%"
                     cy="50%"
                     labelLine={false}
-                    outerRadius={100}
+                    outerRadius={120}
                     fill="#8884d8"
                     dataKey="value"
-                    label={({ name, percent }) => `${(percent * 100).toFixed(0)}%`}
-                >
-                    {
-                        eventGenreData.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-                        ))
+                    label={({ percent }) =>
+                        `${(percent * 100).toFixed(0)}%`
                     }
+                >
+                    {data.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={colors[index]} />
+                    ))}
                 </Pie>
+                <Legend verticalAlign="bottom" height={50} />
             </PieChart>
         </ResponsiveContainer>
     )
